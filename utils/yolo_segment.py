@@ -1,9 +1,8 @@
-#https://pysource.com/2023/02/21/yolo-v8-segmentation
 from ultralytics import YOLO
 import numpy as np
 
 
-class YOLOSegmentation:
+class YOLOSegmentationSupport:
     def __init__(self, model_path):
         self.model = YOLO(model_path)
 
