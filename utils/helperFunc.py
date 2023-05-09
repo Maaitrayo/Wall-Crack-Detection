@@ -8,25 +8,29 @@ frame_wid = 640
 frame_hyt = 480
 
 def imageLoader(path_arg):
-    # Get a list of all items in the folder
-    inter_path = path_arg
-    real_path = ""
-    for path in inter_path:
-        real_path = real_path+path+" "
-    # print(real_path)
-    processed_folder_path = real_path.strip()
-    items = os.listdir(processed_folder_path)
-    print(f"[!] Found {len(items)} images [!]")
+    try:
+        # Get a list of all items in the folder
+        inter_path = path_arg
+        real_path = ""
+        for path in inter_path:
+            real_path = real_path+path+" "
+        # print(real_path)
+        processed_folder_path = real_path.strip()
+        items = os.listdir(processed_folder_path)
+        print(f"[!] Found {len(items)} images [!]")
 
-    images_path_list = []
-    # Loop through each item in the folder
-    for image in items:
-        # Get the path of the item
-        item_path = os.path.join(processed_folder_path, image)
-        images_path_list.append(item_path)
+        images_path_list = []
+        # Loop through each item in the folder
+        for image in items:
+            # Get the path of the item
+            item_path = os.path.join(processed_folder_path, image)
+            images_path_list.append(item_path)
+        return (images_path_list, items)
+    
+    except Exception as err:
+        print("[!] CHECK DATA FOLDER PATH ARGUMENT [!]") 
 
     # Return a tuple containing the list of image paths and the list of image names
-    return (images_path_list, items)
 
 def imagePreprosessing(path):
     img = cv2.imread(path)
